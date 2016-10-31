@@ -28,6 +28,7 @@ var explaain = new (function() {
    * Run on page load
    */
   onPageReady(function() {
+    console.log(1);
     linkExplaainKeywords();
     addExplaainStyles();
 
@@ -270,9 +271,9 @@ var explaain = new (function() {
     if (!content)
       return;
     var textColumns = content.getElementsByClassName('left-column');
-    if (!textColumns)
-      return;
-    textColumns[0].innerHTML = textColumns[0].innerHTML.replace("Donald Trump", '<a href="#donald-trump" class="explaain-link">Donald Trump</a>');
+    console.log(textColumns);
+    if (textColumns.length)
+      textColumns[0].innerHTML = textColumns[0].innerHTML.replace("Donald Trump", '<a href="#donald-trump" class="explaain-link">Donald Trump</a>');
   }
 
   String.prototype.replaceAll = function(search, replacement) {
