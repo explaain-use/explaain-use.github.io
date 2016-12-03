@@ -12,6 +12,7 @@ var explaain = new (function() {
   var version = "1.3.0";
 
   var apiServer = "http://api.explaain.com";
+  var appServer = "http://app.explaain.com";
 
   var baseUrl = "";
   if (window.location.hostname && window.location.hostname != "localhost")
@@ -28,8 +29,7 @@ var explaain = new (function() {
    * Run on page load
    */
   onPageReady(function() {
-    console.log(1);
-    linkExplaainKeywords();
+    // linkExplaainKeywords();
     addExplaainStyles();
 
     var elements = document.getElementsByClassName("explaain");
@@ -90,8 +90,10 @@ var explaain = new (function() {
     if (target.tagName === 'A') {
       var href = target.getAttribute('href');
       var regEx = new RegExp('^'+RegExp.escape(apiServer));
-      if (regEx.test(href) === true) {
+      var regExApp = new RegExp('^'+RegExp.escape(appServer)); //This is to allow people to link to app.explaain.com/cardID as well as api.expl.....
+      if (regEx.test(href) === true || regExApp.test(href) === true) {
         e.preventDefault();
+        href = href.replace('app.explaain.com','api.explaain.com');
         showOverlay(href);
         // Return false to prevent a touch event from also trigging a click
         return false;
@@ -271,7 +273,6 @@ var explaain = new (function() {
     if (!content)
       return;
     var textColumns = content.getElementsByClassName('left-column');
-    console.log(textColumns);
     if (textColumns.length)
       textColumns[0].innerHTML = textColumns[0].innerHTML.replace("Donald Trump", '<a href="#donald-trump" class="explaain-link">Donald Trump</a>');
   }
