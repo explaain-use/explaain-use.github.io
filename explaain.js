@@ -14,7 +14,7 @@ var explaain = new (function() {
   var apiServer = "http://api.explaain.com";
   var appServer = "http://app.explaain.com";
   // var appServer = "http://localhost:5000";
-
+  
   var baseUrl = "";
   if (window.location.hostname && window.location.hostname != "localhost")
     baseUrl = "http://use.explaain.com/"
@@ -94,7 +94,7 @@ var explaain = new (function() {
       var href = target.getAttribute('href');
       var regEx = new RegExp('^'+RegExp.escape(apiServer));
       var regExApp = new RegExp('^'+RegExp.escape(appServer)); //This is to allow people to link to app.explaain.com/cardID as well as api.expl.....
-      if (regEx.test(href) === true || regExApp.test(href) === true || href.search('localhost:5000' > -1)) {
+      if (regEx.test(href) === true || regExApp.test(href) === true || href.search('localhost:5000') > -1) {
         e.preventDefault();
         href = href.replace('app.explaain.com','api.explaain.com');
         href = href.replace('app.dev.explaain.com','api.dev.explaain.com');
