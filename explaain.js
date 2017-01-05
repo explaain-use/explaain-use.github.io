@@ -14,7 +14,7 @@ var explaain = new (function() {
   var apiServer = "http://api.explaain.com";
   var appServer = "http://app.explaain.com";
   // var appServer = "http://localhost:5000";
-  
+
   var baseUrl = "";
   if (window.location.hostname && window.location.hostname != "localhost")
     baseUrl = "http://use.explaain.com/"
@@ -56,11 +56,11 @@ var explaain = new (function() {
     var iframe = document.createElement('iframe');
     iframe.id = "explaain-overlay";
     iframe.src = overlayUrl;
-    iframe.scrolling = "no";
+    // iframe.scrolling = "no";
     iframe.frameBorder = "0";
     iframe.style.position = "fixed";
-    iframe.style.overflow = "hidden";
-    iframe.style.zIndex = "1000000";
+    iframe.style.overflow = "scroll";
+    iframe.style.zIndex = "100000000000000";
     iframe.style.border = "none";
     iframe.style.top = "0";
     iframe.style.left = "0";
@@ -174,6 +174,7 @@ var explaain = new (function() {
     document.getElementById("explaain-overlay").style.pointerEvents = "all";
     // document.getElementById("explaain-overlay").style.visibility = "visible";
 
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
     overlayShowing = true;
   };
   this.showOverlay = showOverlay;
@@ -185,6 +186,7 @@ var explaain = new (function() {
     document.getElementById("explaain-overlay").style.pointerEvents = "none";
     // document.getElementById("explaain-overlay").style.visibility = "hidden";
 
+    document.getElementsByTagName("body")[0].style.overflow = "scroll";
     overlayShowing = false;
   }
   this.hideOverlay =  hideOverlay;
